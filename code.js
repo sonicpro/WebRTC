@@ -1,9 +1,11 @@
 let stream;
 let interval;
-const video = window.navigator.getUserMedia({ "video": true }, (vid) =>{
-  stream = vid;
-  interval = startTimer();
-}, logError);
+window.navigator.mediaDevices.getUserMedia({ "video": true })
+  .then((vid) =>{
+    stream = vid;
+    interval = startTimer();
+  })
+  .catch(logError);
 
 function startTimer() {
   return setTimeout(() => {
